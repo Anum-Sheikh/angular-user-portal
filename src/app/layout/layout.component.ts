@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from "ngx-toastr";
-import { SharedDataService } from "./services/data.service";
+import { SharedDataService } from "../services/data.service";
  
 
 @Component({

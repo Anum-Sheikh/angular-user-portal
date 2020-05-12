@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <div class="container">
+        <h2>Login</h2>
+        <form #login="ngForm">
+            <div class="row">
+                <label for="username">Username</label>
+                <input name="username" type="text" required [(ngModel)]="loginObj.userName" autocomplete="off"
+                    class="form-control" />
+            </div>
+            <div class="row">
+                <label for="password">Password</label>
+                <input name="password" type="password" required [(ngModel)]="loginObj.password"
+                    autocomplete="new-password" class="form-control" />
+            </div>
+            <br>
+            <div class="row">
+                <button [disabled]="isLoading" class="btn btn-primary" (click)="loginUser(login)">Login
+                </button>
+                <button [disabled]="isLoading" class="btn btn-secondary ml-3" (click)= "navigateToSignup()">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>

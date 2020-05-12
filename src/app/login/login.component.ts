@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from "ngx-toastr";
 import { SharedDataService } from "../services/data.service";
+import { Router } from '@angular/router'
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-    private dataService: SharedDataService
+    private dataService: SharedDataService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -39,6 +41,7 @@ debugger;
       if(this.isUserExist()){
         this.toastr.success("logged In Successfully");
         this.dataService.changeDashboardData(this.loginObj);
+        this.router.navigate(['/dashboard']);
         this.isLoading = false;
       }else{
         this.toastr.error("User name and password are incorrect");
@@ -58,4 +61,7 @@ debugger;
     if(userRecord) return true; else return false;
   }
 
+  public navigateToSignup(){
+    this.router.navigate(['/signup']);
+  }
 }

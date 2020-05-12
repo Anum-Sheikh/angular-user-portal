@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from "ngx-toastr";
 import { SharedDataService } from "../services/data.service";
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +18,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
-    private dataService: SharedDataService
+    private dataService: SharedDataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,5 +49,9 @@ export class SignupComponent implements OnInit {
   public checkUserAlreadyExist(){
     if(this.userList.find(x => x.userName == this.userObject.userName.trim())) return true;
     else return false;
+  }
+
+  public navigateToLogin(){
+    this.router.navigate(['/login']);
   }
 }
